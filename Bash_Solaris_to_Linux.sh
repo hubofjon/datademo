@@ -1,3 +1,4 @@
+#author: JonQLi
 #!/usr/bin/bash
 
 #Example of update feed of "SAMPLWSS20180511.csv" with new date "20180514"
