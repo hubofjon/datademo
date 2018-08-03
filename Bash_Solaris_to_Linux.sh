@@ -1,9 +1,9 @@
 #author: JonQLi
 #!/usr/bin/bash
 
-#Example of update feed of "SAMPLWSS20180511.csv" with new date "20180514"
+#Example of update feed of "SAMPL20180511.csv" with new date "20180514"
 #1. copy SAMPL20180511.csv and .mrk file from PROD to TEST /tmp directory
-#2. in DEV1/tmp, run "chmod 666 SAMPLWSS20180511*"
+#2. in DEV1/tmp, run "chmod 666 SAMPL20180511*"
 #3. login as op run "./itp_kit.sh SAMPL20180511.csv 20180514"
 
 if [ "$#" -ne 2 ]; then
