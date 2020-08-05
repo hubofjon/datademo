@@ -1,0 +1,27 @@
+import aiohttp
+import asyncio
+
+   #Generica connector     
+#    headers={"User-Agent": "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2225.0 Safari/537.36"}
+    referer="https://google.com"
+    user_agent_perm='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.108 Safari/537.36'
+    headers = {
+        "Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        "Accept-Encoding":"gzip, deflate",
+        "Accept-Language":"en-GB,en;q=0.9,en-US;q=0.8,ml;q=0.7",
+        "Connection":"keep-alive",
+        "Referer":referer,
+        "Upgrade-Insecure-Requests":"1",
+        #"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.119 Safari/537.36"
+        "User-Agent":user_agent_perm
+        }
+    tcp_conn_max=48
+    connector = aiohttp.TCPConnector(limit=tcp_conn_max, limit_per_host=tcp_conn_max)
+    session = aiohttp.ClientSession(connector=connector, headers=headers)
+#        ClientSession(\
+#        connector=connector, \
+#        headers=headers,\
+#        raise_for_status=True)
+    list_of_html = await asyncio.gather(*[get_HTML_subf_async(url, session) for url in urls])
+    await session.close()
+    return list_of_html
